@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "rspec-sorbet-types"
-  spec.version = "0.1.0"
+  spec.version = "0.2.0"
   spec.authors = ["Hongli Lai"]
   spec.email = ["hongli@hongli.nl"]
 
