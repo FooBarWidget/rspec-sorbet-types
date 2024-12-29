@@ -70,7 +70,10 @@ end
 
 Definitions like `number` need to be discovered by the DSL compiler.
 
-The DSL compiler works by requiring all your specs (by default, `spec/**/*.rb`), then inspecting the structure of your RSpec example groups. In case your specs don't follow this filename pattern, then you can customize the glob with the environment variable `SORBET_RSPEC_GLOB`.
+> [!NOTE]
+> The DSL compiler works by requiring all your specs (by default, `spec/**/*.rb`), then inspecting the structure of your RSpec example groups. In case your specs don't follow this filename pattern, then you can customize the glob with the environment variable `SORBET_RSPEC_GLOB`.
+>
+> If your code needs to detect whether it's being required by the DSL compiler, then check whether `ENV["SORBET_RSPEC_TYPES_COMPILING"] == "1"`.
 
 **First**, run the DSL compiler:
 

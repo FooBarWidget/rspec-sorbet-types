@@ -34,6 +34,9 @@ module Tapioca
           end
         end
 
+        # Set environment variable, allowing other code to detect that we're compiling
+        ENV["SORBET_RSPEC_TYPES_COMPILING"] = "1"
+
         # Load all spec files during compiler definition
         require_spec_files!
 
