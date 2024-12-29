@@ -106,7 +106,7 @@ end
 >
 > RSpec generates a new class for every `describe`/`context` block. It follows the pattern "RSpec::ExampleGroups::[example group slug]". The easiest way to find out the name is to put a `puts self` in the block and check what it prints.
 
-Note that you must also type hints for any nested `describe`/`context` blocks:
+Note that you must also insert type hints for any nested `describe`/`context` blocks:
 
 ```ruby
 # typed: strict
