@@ -58,7 +58,7 @@ jobs:
       - name: Verify version number
         id: get_version
         run: |
-          VERSION_STRING=$(ruby -r ./lib/debendencies/version.rb -e "puts Debendencies::VERSION_STRING")
+          VERSION_STRING=$(ruby -r ./lib/rspec/sorbet/types/version.rb -e "puts RSpec::Sorbet::Types::VERSION_STRING")
           if ! [[ "$GITHUB_REF_NAME" =~ ^v ]]; then
             echo "Tag name must start with a 'v'."
             exit 1
