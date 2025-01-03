@@ -22,15 +22,30 @@ module Tapioca
           private
 
           sig { void }
+          def add_spec_dir_to_load_path!
+            $LOAD_PATH.unshift(spec_dir)
+          end
+
+          sig { void }
           def require_spec_files!
-            Dir.glob(spec_glob).each do |file|
-              require(file)
+            Dir.glob(spec_glob, base: spec_dir).each do |path|
+              require(strip_rb_suffix(path))
             end
           end
 
           sig { returns(String) }
+          def spec_dir
+            ENV["SORBET_RSPEC_DIR"] || File.join(Dir.pwd, "spec")
+          end
+
+          sig { returns(String) }
           def spec_glob
-            ENV["SORBET_RSPEC_GLOB"] || File.join(".", "spec", "**", "*.rb")
+            ENV["SORBET_RSPEC_GLOB"] || File.join("**", "*.rb")
+          end
+
+          sig { params(path: T.any(String, Pathname)).returns(String) }
+          def strip_rb_suffix(path)
+            path.sub(/\.rb$/, "").to_s
           end
         end
 
@@ -38,6 +53,7 @@ module Tapioca
         ENV["SORBET_RSPEC_TYPES_COMPILING"] = "1"
 
         # Load all spec files during compiler definition
+        add_spec_dir_to_load_path!
         require_spec_files!
 
         sig { override.void }

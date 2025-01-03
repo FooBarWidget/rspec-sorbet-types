@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rspec-sorbet-types (0.2.0)
+    rspec-sorbet-types (0.3.0)
       rspec (~> 3.0)
       sorbet-runtime
       tapioca (>= 0.16)

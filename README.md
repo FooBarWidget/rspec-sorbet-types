@@ -6,10 +6,13 @@ This gem adds Sorbet typechecking support for RSpec so that you can use `typed: 
 
 1. Add `rspec-sorbet-types` to your Gemfile.
 
-2. Make sure your `sorbet/tapioca/require.rb` requires RSpec:
+2. Make sure your `sorbet/tapioca/require.rb` requires RSpec (and possibly RSpec-Rails):
 
    ```ruby
    require "rspec"
+
+   # If using rspec-rails:
+   require "rspec-rails"
    ```
 
 3. Have Tapioca regenerate all gem type definitions just in case they're outdated:
@@ -71,7 +74,10 @@ end
 Definitions like `number` need to be discovered by the DSL compiler.
 
 > [!NOTE]
-> The DSL compiler works by requiring all your specs (by default, `spec/**/*.rb`), then inspecting the structure of your RSpec example groups. In case your specs don't follow this filename pattern, then you can customize the glob with the environment variable `SORBET_RSPEC_GLOB`.
+> The DSL compiler works by requiring all your specs (by default, `**/*.rb` under the base directory `spec`), then inspecting the structure of your RSpec example groups. In case your specs don't follow this filename pattern, then you can customize with these environment variables:
+>
+> - `SORBET_RSPEC_DIR`: the base directory under which RSpec spec files live. Default: `spec`
+> - `SORBET_RSPEC_GLOB`: a glob under `SORBET_RSPEC_DIR` that specifies which files to load. Default: `**/*.rb`.
 >
 > If your code needs to detect whether it's being required by the DSL compiler, then check whether `ENV["SORBET_RSPEC_TYPES_COMPILING"] == "1"`.
 
