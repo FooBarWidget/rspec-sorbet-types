@@ -7660,7 +7660,7 @@ module RSpec::Matchers::DSL
 
   # :nocov:
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#85
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#84
   def warn_about_block_args(name, declarations); end
 end
 
@@ -7669,13 +7669,13 @@ end
 # override any of these using the {RSpec::Matchers::DSL::Macros Macros} methods
 # from within an `RSpec::Matchers.define` block.
 #
-# source://rspec-expectations//lib/rspec/matchers/dsl.rb#387
+# source://rspec-expectations//lib/rspec/matchers/dsl.rb#385
 module RSpec::Matchers::DSL::DefaultImplementations
   include ::RSpec::Matchers::BuiltIn::BaseMatcher::DefaultFailureMessages
 
   # The default description.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#397
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#395
   def description; end
 
   # Used internally by objects returns by `should` and `should_not`.
@@ -7683,14 +7683,14 @@ module RSpec::Matchers::DSL::DefaultImplementations
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#392
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#390
   def diffable?; end
 
   # Most matchers do not expect call stack jumps.
   #
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#414
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#412
   def expects_call_stack_jump?; end
 
   # Matchers do not support block expectations by default. You
@@ -7698,24 +7698,24 @@ module RSpec::Matchers::DSL::DefaultImplementations
   #
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#405
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#403
   def supports_block_expectations?; end
 
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#409
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#407
   def supports_value_expectations?; end
 
   private
 
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#420
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#418
   def chained_method_clause_sentences; end
 end
 
 # Contains the methods that are available from within the
 # `RSpec::Matchers.define` DSL for creating custom matchers.
 #
-# source://rspec-expectations//lib/rspec/matchers/dsl.rb#106
+# source://rspec-expectations//lib/rspec/matchers/dsl.rb#104
 module RSpec::Matchers::DSL::Macros
   # Convenience for defining methods on this matcher to create a fluent
   # interface. The trick about fluent interfaces is that each method must
@@ -7745,7 +7745,7 @@ module RSpec::Matchers::DSL::Macros
   #
   #   expect(minor).to have_errors_on(:age).with("Not old enough to participate")
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#300
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#298
   def chain(method_name, *attr_names, &definition); end
 
   # Customize the description to use for one-liners.  Only use this when
@@ -7762,13 +7762,13 @@ module RSpec::Matchers::DSL::Macros
   #   end
   # @yield [Object] actual the actual object (i.e. the value wrapped by `expect`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#255
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#253
   def description(&definition); end
 
   # Tells the matcher to diff the actual and expected values in the failure
   # message.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#261
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#259
   def diffable; end
 
   # Customizes the failure message to use when this matcher is
@@ -7786,7 +7786,7 @@ module RSpec::Matchers::DSL::Macros
   #   end
   # @yield [Object] actual the actual object (i.e. the value wrapped by `expect`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#218
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#216
   def failure_message(&definition); end
 
   # Customize the failure message to use when this matcher is asked
@@ -7804,7 +7804,7 @@ module RSpec::Matchers::DSL::Macros
   #   end
   # @yield [Object] actual the actual object (i.e. the value wrapped by `expect`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#237
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#235
   def failure_message_when_negated(&definition); end
 
   # Stores the block that is used to determine whether this matcher passes
@@ -7833,7 +7833,7 @@ module RSpec::Matchers::DSL::Macros
   # @param options [Hash] for defining the behavior of the match block.
   # @yield [Object] actual the actual value (i.e. the value wrapped by `expect`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#133
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#131
   def match(options = T.unsafe(nil), &match_block); end
 
   # Use this instead of `match` when the block will raise an exception
@@ -7850,7 +7850,7 @@ module RSpec::Matchers::DSL::Macros
   #   expect(email_validator).to accept_as_valid("person@company.com")
   # @yield [Object] actual the actual object (i.e. the value wrapped by `expect`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#190
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#188
   def match_unless_raises(expected_exception = T.unsafe(nil), &match_block); end
 
   # Use this to define the block for a negative expectation (`expect(...).not_to`)
@@ -7866,7 +7866,7 @@ module RSpec::Matchers::DSL::Macros
   # @param options [Hash] for defining the behavior of the match block.
   # @yield [Object] actual the actual value (i.e. the value wrapped by `expect`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#162
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#160
   def match_when_negated(options = T.unsafe(nil), &match_block); end
 
   # Declares that the matcher can be used in a block expectation.
@@ -7874,12 +7874,12 @@ module RSpec::Matchers::DSL::Macros
   # expectation without declaring this.
   # (e.g. `expect { do_something }.to matcher`).
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#269
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#267
   def supports_block_expectations; end
 
   private
 
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#314
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#312
   def assign_attributes(attr_names); end
 
   # Does the following:
@@ -7900,7 +7900,7 @@ module RSpec::Matchers::DSL::Macros
   # (e.g. assigning `@actual`, rescueing errors, etc) and
   # can `super` to the user's definition.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#348
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#346
   def define_user_override(method_name, user_def, &our_def); end
 end
 
@@ -7908,32 +7908,32 @@ end
 #
 # @deprecated Use the methods from {Macros} instead.
 #
-# source://rspec-expectations//lib/rspec/matchers/dsl.rb#356
+# source://rspec-expectations//lib/rspec/matchers/dsl.rb#354
 module RSpec::Matchers::DSL::Macros::Deprecated
   # @deprecated Use {Macros#failure_message} instead.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#370
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#368
   def failure_message_for_should(&definition); end
 
   # @deprecated Use {Macros#failure_message_when_negated} instead.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#376
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#374
   def failure_message_for_should_not(&definition); end
 
   # @deprecated Use {Macros#match} instead.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#358
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#356
   def match_for_should(&definition); end
 
   # @deprecated Use {Macros#match_when_negated} instead.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#364
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#362
   def match_for_should_not(&definition); end
 end
 
 # @private
 #
-# source://rspec-expectations//lib/rspec/matchers/dsl.rb#148
+# source://rspec-expectations//lib/rspec/matchers/dsl.rb#146
 RSpec::Matchers::DSL::Macros::RAISE_NOTIFIER = T.let(T.unsafe(nil), Proc)
 
 # The class used for custom matchers. The block passed to
@@ -7941,7 +7941,7 @@ RSpec::Matchers::DSL::Macros::RAISE_NOTIFIER = T.let(T.unsafe(nil), Proc)
 # of the singleton class of an instance, and will have the
 # {RSpec::Matchers::DSL::Macros Macros} methods available.
 #
-# source://rspec-expectations//lib/rspec/matchers/dsl.rb#435
+# source://rspec-expectations//lib/rspec/matchers/dsl.rb#433
 class RSpec::Matchers::DSL::Matcher
   include ::RSpec::Matchers::BuiltIn::BaseMatcher::DefaultFailureMessages
   include ::RSpec::Matchers::DSL::DefaultImplementations
@@ -7953,18 +7953,18 @@ class RSpec::Matchers::DSL::Matcher
   # @api private
   # @return [Matcher] a new instance of Matcher
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#464
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#462
   def initialize(name, declarations, matcher_execution_context, *expected, &block_arg); end
 
   # Exposes the value being matched against -- generally the object
   # object wrapped by `expect`.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#451
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#449
   def actual; end
 
   # The block parameter used in the expectation
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#458
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#456
   def block_arg; end
 
   # Provides the expected value. This will return an array if
@@ -7973,7 +7973,7 @@ class RSpec::Matchers::DSL::Matcher
   #
   # @see #expected_as_array
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#484
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#482
   def expected; end
 
   # Returns the expected value as an an array. This exists primarily
@@ -7982,30 +7982,30 @@ class RSpec::Matchers::DSL::Matcher
   #
   # @see #expected
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#496
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#494
   def expected_as_array; end
 
   # Adds the name (rather than a cryptic hex number)
   # so we can identify an instance of
   # the matcher in error messages (e.g. for `NoMethodError`)
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#501
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#499
   def inspect; end
 
   # The name of the matcher.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#461
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#459
   def name; end
 
   # Exposes the exception raised during the matching by `match_unless_raises`.
   # Could be useful to extract details for a failure message.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#455
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#453
   def rescued_exception; end
 
   private
 
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#525
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#522
   def actual_arg_for(block); end
 
   # Takes care of forwarding unhandled messages to the
@@ -8015,7 +8015,7 @@ class RSpec::Matchers::DSL::Matcher
   # Rails' test helper methods, but it's also a useful
   # feature in its own right.
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#535
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#532
   def method_missing(method, *args, **_arg2, &block); end
 
   # Indicates that this matcher responds to messages
@@ -8024,7 +8024,7 @@ class RSpec::Matchers::DSL::Matcher
   #
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#509
+  # source://rspec-expectations//lib/rspec/matchers/dsl.rb#507
   def respond_to_missing?(method, include_private = T.unsafe(nil)); end
 end
 
