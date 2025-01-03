@@ -6,13 +6,12 @@ This gem adds Sorbet typechecking support for RSpec so that you can use `typed: 
 
 1. Add `rspec-sorbet-types` to your Gemfile.
 
-2. Make sure your `sorbet/tapioca/require.rb` requires RSpec (and possibly RSpec-Rails):
+2. Make sure your `sorbet/tapioca/require.rb` requires RSpec and related components:
 
    ```ruby
    require "rspec"
-
-   # If using rspec-rails:
-   require "rspec-rails"
+   require "rspec/mocks"
+   require "rspec/rails" # if using this
    ```
 
 3. Have Tapioca regenerate all gem type definitions just in case they're outdated:
@@ -227,7 +226,7 @@ However, that's a bit verbose. Perhaps a better workaround is the use of `rsig`,
 ```ruby
 # typed: strict
 require "rspec"
-require "rspec/sorbet/types"
+require "rspec/sorbet/types" # Be sure to require this!
 
 RSpec.describe "bar" do
   extend RSpec::Sorbet::Types::Sig # Extending this also extends T::Sig, does not need to be extended again in sub-contexts
@@ -236,9 +235,9 @@ RSpec.describe "bar" do
   let(:number) { 100 }
 
   specify "let works" do
-    expect(number).to eq(100) # typecheck passes!
+    expect(number).to eq(100) # After rerunning `./bin/tapioca dsl`, typecheck passes!
   end
 end
 ```
 
-As with the other changes we made above, it is required to run the dsl compiler (`bin/tapioca dsl`) after adding, removing, or updating these signatures.
+As with the other changes we made above, it is required to run the DSL compiler (`bin/tapioca dsl`) after adding, removing, or updating these signatures.
