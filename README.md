@@ -20,6 +20,20 @@ This gem adds Sorbet typechecking support for RSpec so that you can use `typed: 
    ./bin/tapioca gem --all
    ```
 
+4. If using Rails, ensure test schema maintenance is skipped when running the DSL compiler.
+
+   Edit `spec/rails_helper.rb` and look for:
+
+   ```ruby
+   ActiveRecord::Migration.maintain_test_schema!
+   ```
+
+   Change to:
+
+   ```ruby
+   ActiveRecord::Migration.maintain_test_schema! unless ENV["SORBET_RSPEC_TYPES_COMPILING"] == "1"
+   ```
+
 ## Basic usage (without DSL compiler)
 
 Once you've performed setup, you can use basic RSpec methods in your specs such as `RSpec.describe`, `it`, `expect`, `eq`, etc. The following code should pass typechecking:
